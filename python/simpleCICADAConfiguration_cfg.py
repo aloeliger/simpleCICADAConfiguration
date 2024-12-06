@@ -92,6 +92,22 @@ else:
     from L1Trigger.Configuration.customiseReEmul import L1TReEmulMCFromRAW
     process = L1TReEmulMCFromRAW(process)
 
+simpleCICADANtuplizer = cms.EDAnalyzer(
+    "simpleCICADANtuplizer",
+    scoreSource = cms.InputTag("simCaloStage2Layer1Summary", "CICADAScore")
+)
+
+process.simpleCICADANtuplizer = simpleCICADANtuplizer
+process.NtuplePath = cms.Path(
+    process.simpleCICADANtuplizer
+)
+process.schedule.append(process.NtuplePath)
+
+process.TFileService = cms.Service(
+	"TFileService",
+        fileName = cms.string(options.outputFile)
+)
+
 print("schedule:")
 print(process.schedule)
 print("schedule contents:")
