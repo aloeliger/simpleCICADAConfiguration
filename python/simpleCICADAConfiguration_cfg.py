@@ -92,6 +92,9 @@ else:
     from L1Trigger.Configuration.customiseReEmul import L1TReEmulMCFromRAW
     process = L1TReEmulMCFromRAW(process)
 
+from L1Trigger.L1TNtuples.customiseL1Ntuple import L1NtupleRAWEMU
+process = L1NtupleRAWEMU(process)
+    
 simpleCICADANtuplizer = cms.EDAnalyzer(
     "simpleCICADANtuplizer",
     scoreSource = cms.InputTag("simCaloStage2Layer1Summary", "CICADAScore")
