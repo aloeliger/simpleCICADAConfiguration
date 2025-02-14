@@ -4,6 +4,10 @@
 <use name="FWCore/Utilities"/>
 <use name="DataFormats/L1CaloTrigger"/>
 <use name="CommonTools/UtilAlgos"/>
+<use name="CondFormats/DataRecord"/>
+<use name="CondFormats/L1TObjects"/>
+<use name="DataFormats/L1TGlobal"/>
+
 <use name ="ROOT"/>
 
 <flags EDM_PLUGIN="1"/>
