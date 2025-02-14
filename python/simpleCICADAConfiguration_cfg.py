@@ -100,9 +100,17 @@ simpleCICADANtuplizer = cms.EDAnalyzer(
     scoreSource = cms.InputTag("simCaloStage2Layer1Summary", "CICADAScore")
 )
 
+L1TTriggerBitsNtuplizer = cms.EDAnalyzer(
+    'L1TTriggerBitsNtuplizer',
+    gtResults    = cms.InputTag("gtStage2Digis"),
+    verboseDebug = cms.bool(False),
+)
+
 process.simpleCICADANtuplizer = simpleCICADANtuplizer
+process.L1TTriggerBitsNtuplizer = L1TTriggerBitsNtuplizer
 process.NtuplePath = cms.Path(
-    process.simpleCICADANtuplizer
+    process.simpleCICADANtuplizer +
+    process.L1TTriggerBitsNtuplizer
 )
 process.schedule.append(process.NtuplePath)
 
